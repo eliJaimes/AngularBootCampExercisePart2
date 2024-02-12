@@ -19,10 +19,6 @@ import { PostsService } from '../../services/posts.service';
 	templateUrl: './posts-table.component.html',
 })
 export class PostsTableComponent implements OnInit {
-	private posts: Array<Post> = [];
-
-	// public filteredPosts: Array<Post> = [];
-
 	private posts$!: Observable<Array<Post>>;
 
 	public filteredPosts$!: Observable<Array<Post>>;
@@ -69,20 +65,6 @@ export class PostsTableComponent implements OnInit {
 		);
 	}
 
-	// public filterChangeHandler(event: string): void {
-	// 	const filterValue: string = event.toLowerCase();
-
-	// 	this.filteredPosts = this.posts.filter(
-	// 		(currentValue: Post): boolean =>
-	// 			currentValue.title.includes(filterValue) ||
-	// 			currentValue.body.includes(filterValue),
-	// 	);
-	// }
-
-	// public clearFilterHandler(): void {
-	// 	this.filteredPosts = this.posts;
-	// }
-
 	public filterChangeHandler(event: string): void {
 		console.log('%c\nfilterChangeHandler', 'color: SpringGreen');
 		console.log('event: %O', event);
@@ -91,5 +73,6 @@ export class PostsTableComponent implements OnInit {
 
 	public clearFilterHandler(): void {
 		console.log('%c\nclearFilterHandler', 'color: SpringGreen');
+		this.filterChangeSubject$$.next('');
 	}
 }

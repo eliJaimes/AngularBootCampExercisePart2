@@ -39,3 +39,9 @@
 # Filter the posts based on filterChange values
 
 - Add logic to filter the posts based on the filterChange$ emitted values
+
+# Add clearFilter logic
+
+- On clearFilterHandler method emit an empty value on the filterChangeSubject$$ subject
+
+- Clean old code
