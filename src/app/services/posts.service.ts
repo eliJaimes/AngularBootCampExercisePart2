@@ -14,7 +14,7 @@ export class PostsService {
 	/* NOTE: use 'readonly' is a good practice that prevents changing the injected token by accident */
 	public constructor(private readonly httpClient: HttpClient) {}
 
-	public getPosts(): Observable<Array<Post>> {
-		return this.httpClient.get<Array<Post>>(this.postEndpoint);
-	}
+	public posts$: Observable<Array<Post>> = this.httpClient.get<Array<Post>>(
+		this.postEndpoint,
+	);
 }

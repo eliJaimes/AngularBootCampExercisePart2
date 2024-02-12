@@ -21,7 +21,7 @@ export class PostsTableComponent implements OnInit, OnDestroy {
 
 	/* NOTE: this method will be executed by Angular on component's initialization */
 	public ngOnInit(): void {
-		this.postsSubscription = this.postsService.getPosts().subscribe({
+		this.postsSubscription = this.postsService.posts$.subscribe({
 			error: (error: Error): void => {
 				console.error('❌ - Something wrong occurred: %O', error);
 				this.posts = [];
