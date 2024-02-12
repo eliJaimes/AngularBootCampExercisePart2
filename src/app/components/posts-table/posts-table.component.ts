@@ -1,6 +1,6 @@
 /* ••[1]••••••••••••••••••••••••• posts-table.component.ts •••••••••••••••••••••••••••••• */
 
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../entities/post.type';
 import { PostsService } from '../../services/posts.service';
@@ -13,11 +13,16 @@ import { PostsService } from '../../services/posts.service';
 export class PostsTableComponent implements OnInit {
 	private posts: Array<Post> = [];
 
-	public filteredPosts: Array<Post> = [];
+	// public filteredPosts: Array<Post> = [];
 
 	private posts$!: Observable<Array<Post>>;
 
 	public filteredPosts$!: Observable<Array<Post>>;
+
+	private filterChangeSubject$$: Subject<string> = new Subject<string>();
+
+	private filterChange$: Observable<string> =
+		this.filterChangeSubject$$.asObservable();
 
 	public constructor(private readonly postsService: PostsService) {}
 
@@ -32,17 +37,27 @@ export class PostsTableComponent implements OnInit {
 		this.filteredPosts$ = this.posts$;
 	}
 
-	public filterChangeHandler(event: string): void {
-		const filterValue: string = event.toLowerCase();
+	// public filterChangeHandler(event: string): void {
+	// 	const filterValue: string = event.toLowerCase();
 
-		this.filteredPosts = this.posts.filter(
-			(currentValue: Post): boolean =>
-				currentValue.title.includes(filterValue) ||
-				currentValue.body.includes(filterValue),
-		);
+	// 	this.filteredPosts = this.posts.filter(
+	// 		(currentValue: Post): boolean =>
+	// 			currentValue.title.includes(filterValue) ||
+	// 			currentValue.body.includes(filterValue),
+	// 	);
+	// }
+
+	// public clearFilterHandler(): void {
+	// 	this.filteredPosts = this.posts;
+	// }
+
+	public filterChangeHandler(event: string): void {
+		console.log('%c\nfilterChangeHandler', 'color: SpringGreen');
+		console.log('event: %O', event);
+		this.filterChangeSubject$$.next(event);
 	}
 
 	public clearFilterHandler(): void {
-		this.filteredPosts = this.posts;
+		console.log('%c\nclearFilterHandler', 'color: SpringGreen');
 	}
 }

@@ -13,3 +13,11 @@
 - The async pipe will handle the subscription/un subscription for us
 
 - Note: this change will break filtering mechanism
+
+# Create a Subject to collect filter changes
+
+- Create a Subject called filterChangeSubject$$
+
+- From tha Subject expose an observable calling asObservable method
+
+- Use filterChangeSubject$$ to emit next notifications on the filterChange$ observable
