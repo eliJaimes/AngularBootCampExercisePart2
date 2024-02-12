@@ -1,21 +1,20 @@
 <!-- ••[1]••••••••••••••••••••••••• posts-table.component.html •••••••••••••••••••••••••••••• -->
 
 <div class="post-container">
-	<!-- NOTE: 'noPostsRef' is a template variable, help you use data from one
-		part of a template in another part of the template
-		https://angular.io/guide/template-reference-variables
-		-->
-	<ul class="post-items" *ngIf="filteredPosts.length; else noPostsRef">
-		<!-- NOTE: 'json' pipe is useful per debugging purposes -->
-		<!-- <pre>{{ posts | json }}</pre> -->
-		<h1 class="title">Posts</h1>
+	<ng-container *ngIf="filteredPosts$ | async as filteredPosts">
+		<ul class="post-items" *ngIf="filteredPosts.length; else noPostsRef">
+			<h1 class="title">Posts</h1>
 
-		<app-filter (filterChange)="filterChangeHandler($event)"></app-filter>
+			<app-filter (filterChange)="filterChangeHandler($event)"></app-filter>
 
-		<li class="post" *ngFor="let post of filteredPosts; let postIndex = index">
-			<app-post-item [post]="post"></app-post-item>
-		</li>
-	</ul>
+			<li
+				class="post"
+				*ngFor="let post of filteredPosts; let postIndex = index"
+			>
+				<app-post-item [post]="post"></app-post-item>
+			</li>
+		</ul>
+	</ng-container>
 	<ng-template #noPostsRef>
 		<div class="no-posts">
 			<span>
