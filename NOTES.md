@@ -21,3 +21,9 @@
 - From tha Subject expose an observable calling asObservable method
 
 - Use filterChangeSubject$$ to emit next notifications on the filterChange$ observable
+
+# Add combineLatest operator to compose the filteredPosts$ Observable
+
+- Instead of assigning the posts$ observable directly to the filteredPosts$ observable, run it trough a combineLatest creation operator
+
+- Until this point the effect will be the same as a simple assignation
