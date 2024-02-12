@@ -27,3 +27,11 @@
 - Instead of assigning the posts$ observable directly to the filteredPosts$ observable, run it trough a combineLatest creation operator
 
 - Until this point the effect will be the same as a simple assignation
+
+# Add a second source to the combineLatest operator
+
+- Include the filterChange$ observable as a source in the combineLatest creation operator
+
+- Since the filterChange$ observable only emits values when we dispatch them trough the filterChangeSubject$$ subject, we will not have any emissions at first
+
+- Add a startWith operator to the filterChange$ observable

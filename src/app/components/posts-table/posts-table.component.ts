@@ -1,6 +1,14 @@
 /* ••[1]••••••••••••••••••••••••• posts-table.component.ts •••••••••••••••••••••••••••••• */
 
-import { catchError, combineLatest, map, Observable, of, Subject } from 'rxjs';
+import {
+	catchError,
+	combineLatest,
+	map,
+	Observable,
+	of,
+	startWith,
+	Subject,
+} from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../entities/post.type';
 import { PostsService } from '../../services/posts.service';
@@ -35,13 +43,23 @@ export class PostsTableComponent implements OnInit {
 		);
 
 		this.filteredPosts$ = combineLatest({
+			filterChange: this.filterChange$.pipe(startWith('')),
 			posts: this.posts$,
 		}).pipe(
-			map(({ posts }: { posts: Array<Post> }): Array<Post> => {
-				console.log('posts: %O', posts);
+			map(
+				({
+					filterChange,
+					posts,
+				}: {
+					filterChange: string;
+					posts: Array<Post>;
+				}): Array<Post> => {
+					console.log('filterChange: %O', filterChange);
+					console.log('posts: %O', posts);
 
-				return posts;
-			}),
+					return posts;
+				},
+			),
 		);
 	}
 
