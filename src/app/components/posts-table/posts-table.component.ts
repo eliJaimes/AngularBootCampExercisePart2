@@ -57,7 +57,13 @@ export class PostsTableComponent implements OnInit {
 					console.log('filterChange: %O', filterChange);
 					console.log('posts: %O', posts);
 
-					return posts;
+					const filterValue: string = filterChange.toLowerCase();
+
+					return posts.filter(
+						(currentValue: Post): boolean =>
+							currentValue.title.includes(filterValue) ||
+							currentValue.body.includes(filterValue),
+					);
 				},
 			),
 		);

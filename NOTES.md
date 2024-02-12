@@ -35,3 +35,7 @@
 - Since the filterChange$ observable only emits values when we dispatch them trough the filterChangeSubject$$ subject, we will not have any emissions at first
 
 - Add a startWith operator to the filterChange$ observable
+
+# Filter the posts based on filterChange values
+
+- Add logic to filter the posts based on the filterChange$ emitted values
