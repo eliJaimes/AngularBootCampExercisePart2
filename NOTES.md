@@ -45,3 +45,5 @@
 - On clearFilterHandler method emit an empty value on the filterChangeSubject$$ subject
 
 - Clean old code
+
+# Refactor and clean a little bit more
