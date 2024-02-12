@@ -1,0 +1,30 @@
+<!-- ••[1]••••••••••••••••••••••••• posts-table.component.html •••••••••••••••••••••••••••••• -->
+
+<div class="post-container">
+	<!-- NOTE: 'noPostsRef' is a template variable, help you use data from one
+		part of a template in another part of the template
+		https://angular.io/guide/template-reference-variables
+		-->
+	<ul class="post-items" *ngIf="filteredPosts.length; else noPostsRef">
+		<!-- NOTE: 'json' pipe is useful per debugging purposes -->
+		<!-- <pre>{{ posts | json }}</pre> -->
+		<h1 class="title">Posts</h1>
+
+		<app-filter (filterChange)="filterChangeHandler($event)"></app-filter>
+
+		<li class="post" *ngFor="let post of filteredPosts; let postIndex = index">
+			<app-post-item [post]="post"></app-post-item>
+		</li>
+	</ul>
+	<ng-template #noPostsRef>
+		<div class="no-posts">
+			<span>
+				Currently, there are no posts or nothing matches the filter.
+			</span>
+
+			<button class="clear-filter" (click)="clearFilterHandler()">
+				Clear filter
+			</button>
+		</div>
+	</ng-template>
+</div>

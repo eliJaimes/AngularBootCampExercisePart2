@@ -1,0 +1,42 @@
+// ••[1]••••••••••••••••••••••••• posts-table.component.scss •••••••••••••••••••••••••••••• //
+
+/* stylelint-disable max-nesting-depth */
+
+@use './../../../mixins'as mixins;
+
+@use './../../../variables'as variables;
+
+.post-container {
+	.post-items {
+
+		@include mixins.container;
+
+		.title {
+			color: variables.$primary;
+		}
+
+		.post {
+			list-style: none;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.no-posts {
+
+		@include mixins.container;
+		align-items: center;
+		display: flex;
+		font-weight: variables.$bold-font;
+		justify-content: space-between;
+
+
+		.clear-filter {
+			background: transparent;
+			border: 2px solid variables.$highlight;
+			border-radius: .25rem;
+			color: variables.$highlight;
+			cursor: pointer;
+			padding: 0.5rem 1rem;
+		}
+	}
+}

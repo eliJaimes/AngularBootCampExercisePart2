@@ -1,0 +1,16 @@
+// ••[1]••••••••••••••••••••••••• post-item.component.scss •••••••••••••••••••••••••••••• //
+
+@use './../../../variables'as variables;
+
+.id {
+	color: variables.$secondary;
+}
+
+.post-title {
+	font-weight: variables.$bold-font;
+	// text-transform: uppercase; // Alternative to text pipes
+}
+
+.post-body {
+	font-style: italic;
+}

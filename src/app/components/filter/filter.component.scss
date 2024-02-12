@@ -1,0 +1,47 @@
+// ••[1]••••••••••••••••••••••••• filter.component.scss •••••••••••••••••••••••••••••• //
+
+/* stylelint-disable max-nesting-depth */
+
+@use './../../../variables'as variables;
+
+:host {
+	display: block;
+	margin-bottom: 2rem;
+
+	.filter {
+		appearance: none;
+		background: transparent;
+		border: 1px solid variables.$shadow;
+		border-radius: .25rem;
+		color: variables.$text;
+		font-size: 1.25rem;
+		outline: none;
+		padding: .25rem 1rem;
+		width: calc(100% - 2rem);
+
+		&:active,
+		&:focus,
+		&:hover,
+			{
+			border: 1px solid variables.$primary;
+
+			&::-webkit-search-cancel-button {
+				background-color: variables.$primary;
+				opacity: 1;
+			}
+		}
+
+		&::-webkit-search-cancel-button {
+			appearance: none;
+			background: variables.$shadow url("./../../../assets/clearButton.svg") no-repeat 50% 50%;
+			background-size: contain;
+			border-radius: 10px;
+			cursor: pointer;
+			height: 20px;
+			opacity: 0.3;
+			position: relative;
+			right: 0;
+			width: 20px;
+		}
+	}
+}
